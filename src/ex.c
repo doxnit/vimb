@@ -1189,7 +1189,7 @@ static VbCmdResult ex_shellex(Client *c, const ExArg *arg)
         ex_line = strtok(stdOut, "\n");
         while (ex_line) {
             res = ex_run_string(c, ex_line, false);
-            if (res  && CMD_ERROR) {
+            if (!(res & CMD_SUCCESS)) {
                 break;
             }
             ex_line = strtok(NULL, "\n");
